@@ -1,57 +1,81 @@
-# AI-Driven Credit Risk Prediction Engine
+# Deep Learning for Credit Risk Prediction
 
-## Description
-An AI-driven credit risk prediction model developed using deep learning techniques to evaluate the creditworthiness of individual and institutional clients. The model enhances loan processing capabilities, reduces processing time, and improves prediction accuracy, leading to more informed credit decisions.
+## Overview
 
-## Data Description
+This repository contains a machine learning project that aims to predict credit risk using various machine learning techniques, including deep learning and ensemble methods. The project covers the entire machine learning workflow from data preprocessing, feature engineering, model building, to evaluation.
 
-The dataset used for this project is comprehensive and includes a variety of features essential for evaluating the creditworthiness of clients. Below is a breakdown of the features and their descriptions:
+## Dataset
 
-### Features:
+The dataset used in this project is the `credit_risk_dataset.csv`, which contains information about credit applicants, including their personal details, loan details, and credit histories. The target variable is the `loan_status`, indicating whether an applicant is likely to default on their loan or not.
 
-- **person_age:** Age of the individual.
-- **person_income:** Annual income.
-- **person_home_ownership:** Type of home ownership (e.g., rent, own).
-- **person_emp_length:** Employment length in years.
-- **loan_intent:** The intent of the loan (e.g., education, medical expenses).
-- **loan_grade:** The grade of the loan.
-- **loan_amnt:** The loan amount.
-- **loan_int_rate:** The interest rate on the loan.
-- **loan_status:** Loan status (0 for non-default, 1 for default).
-- **loan_percent_income:** The loan amount as a percentage of annual income.
-- **cb_person_default_on_file:** Whether the person has a history of default (‘Y’ for yes, ‘N’ for no).
-- **cb_person_cred_hist_length:** The length of the person’s credit history.
+### Features
 
-### Data Preprocessing:
+- `person_age`: The age of the credit applicant
+- `person_income`: The income of the applicant
+- `person_home_ownership`: The home ownership status of the applicant
+- `person_emp_length`: Employment length in years
+- `loan_intent`: The intent of the loan
+- `loan_grade`: The grade of the loan
+- `loan_amnt`: The loan amount
+- `loan_int_rate`: The interest rate on the loan
+- `loan_percent_income`: The loan amount as a percentage of income
+- `cb_person_default_on_file`: Whether the person has defaulted in the past
+- `cb_person_cred_hist_length`: The credit history length of the applicant
 
-The following preprocessing steps were applied to clean and transform the raw data into a usable format for model training:
+### Data Preprocessing
 
-1. **Handling Missing Values:**
-   - Filled numerical missing values with the mean or median.
-   - Categorical missing values were filled with the mode or removed.
+- Handling missing values by dropping rows with null values
+- Encoding categorical variables into numerical representations
+- Standardizing features to have a mean of 0 and a standard deviation of 1
 
-2. **Encoding Categorical Variables:**
-   - Converted categorical variables like ‘cb_person_default_on_file’ and ‘person_home_ownership’ into numerical form using encoding techniques.
+## Dependencies
 
-3. **Feature Scaling:**
-   - Applied Min-Max Scaling or Standard Scaling to ensure all features have a similar scale, improving model performance.
+- pandas
+- numpy
+- scikit-learn
+- tensorflow
+- shap
+- matplotlib (optional for visualizations)
 
-4. **Feature Engineering:**
-   - Created new features or optimized existing ones to enhance the model’s predictive performance.
+## How to Run
 
-5. **Handling Imbalanced Data:**
-   - Implemented techniques like oversampling, undersampling, or generating synthetic samples to balance the dataset, ensuring that the model is not biased towards the majority class.
+1. Clone this repository to your local machine.
+2. Install the required dependencies.
+3. Run the Jupyter Notebook to execute the code cells in order.
 
-These preprocessing steps ensured that the data is clean, balanced, and ready for training the deep learning model, leading to more accurate and reliable predictions.
+## Methodology
 
-## Features
-- **Hybrid Model:** Combines convolutional neural networks and recurrent neural networks for enhanced prediction accuracy.
-- **Interpretability:** Integrates SHAP (SHapley Additive exPlanations) for clear insights into model decisions, ensuring regulatory compliance and trust.
+### Model Building
 
-## Installation
-Clone the repository and install the required packages using the following commands:
+The project employs a variety of models, including:
 
-```bash
-git clone https://github.com/yourusername/yourrepositoryname.git
-cd yourrepositoryname
-pip install -r requirements.txt
+1. **Support Vector Machine (SVM)**: 
+   - Hyperparameters are tuned using RandomizedSearchCV.
+   - The model is trained with the best parameters.
+
+2. **Deep Learning**: 
+   - A Sequential model with multiple dense layers, batch normalization, and dropout for regularization.
+   - The model is compiled and trained using the Adam optimizer and binary cross-entropy loss.
+
+3. **Random Forest**: 
+   - Implemented as an ensemble method to improve prediction performance.
+
+### Feature Engineering
+
+- Polynomial features are created to explore complex relationships and interactions among features.
+
+### Model Interpretability
+
+- SHAP (SHapley Additive exPlanations) is used to understand the impact of different features on the model’s predictions.
+
+### Evaluation
+
+- The models are evaluated using accuracy, confusion matrix, and classification report to measure their performance.
+
+## Results
+
+The results indicate a satisfactory level of accuracy in predicting credit risk, showcasing the potential of machine learning in enhancing decision-making in credit allocations. Detailed results and visualizations can be found in the Jupyter Notebook.
+
+## License
+
+This project is open-source and available to anyone under the [MIT License](LICENSE).
